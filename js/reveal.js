@@ -99,7 +99,7 @@
 			touch: true,
 
 			// Loop the presentation
-			loop: true,
+			loop: false,
 
 			// Change the presentation direction to be RTL
 			rtl: false,
@@ -139,7 +139,7 @@
 			//           is present on the current slide or fragment
 			// - 1+:     All slides will progress automatically at the given interval
 			// - false:  No auto-sliding, even if data-autoslide is present
-			autoSlide: 1800,
+			autoSlide: 0,
 
 			// Stop auto-sliding after user input
 			autoSlideStoppable: true,
@@ -3966,9 +3966,9 @@
 		var bits = hash.slice( 2 ).split( '/' ),
 			name = hash.replace( /#|\//gi, '' );
 
-		// If the first bit is not fully numeric and there is a name we
-		// can assume that this is a named link
-		if( !/^[0-9]*$/.test( bits[0] ) && name.length ) {
+		// If the first bit is invalid and there is a name we can
+		// assume that this is a named link
+		if( isNaN( parseInt( bits[0], 10 ) ) && name.length ) {
 			var element;
 
 			// Ensure the named link is a valid HTML ID attribute
